@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>setText</title>
+	<style>
+		.context{
+			width:400px;
+			height: 600px;
+		}
+	</style>
+	<script src='./jquery.min.js'></script>
+</head>
+<body>
+	<div>
+		文章名：<input type="text" class='title'>
+		<br>
+		<br>
+		作者：<input type="text" class='author'>
+		<br>
+		<p>内容：</p>
+		<textarea cols="30" rows="10" class='context'></textarea>
+		<br>
+		<br>
+		<button class='submit'>提交</button>
+	</div>
+	<script>
+	var tit = document.querySelector('.title');
+	var aut = document.querySelector('.author');
+	var con = document.querySelector('.context');
+	var sub = document.querySelector('.submit');
+	sub.onclick = function(){
+		$.ajax({
+			url:'http://localhost:2182/setText',
+			type:'post',
+			data:{
+				name:aut.value,
+				text:con.value,
+				time:new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString(),
+				title:tit.value
+			},
+			success:function(data){
+				alert(data);
+			}
+		});
+	}
+
+	</script>
+</body>
+</html>

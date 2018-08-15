@@ -1,0 +1,23 @@
+doctype
+html
+	meta(charset='utf-8')
+	title getText
+	style.
+		span{
+			float:right;
+		}
+		.page li{
+			float:left;
+			margin-right:20px;
+			list-style:none;
+		}
+body
+	ul
+		-for(var i=0;i<dataArr.length;i++)
+			li
+				a(href='http://localhost:2182/Text.html?uid='+dataArr[i].id)=dataArr[i].title
+				span=dataArr[i].time
+	ul(class='page')
+		-for(var i=0;i<maxL;i++)
+			li
+				a(href='http://localhost:2182/getText.html?page='+(i+1))=i+1
